@@ -58,6 +58,7 @@ class WechatyChannel(ChatChannel):
     # 统一的发送函数，每个Channel自行实现，根据reply的type字段发送不同类型的消息
     def send(self, reply: Reply, context: Context):
         receiver_id = context["receiver"]
+        time.sleep(5)   #$ addd
         loop = asyncio.get_event_loop()
         if context["isgroup"]:
             receiver = asyncio.run_coroutine_threadsafe(self.bot.Room.find(receiver_id), loop).result()
